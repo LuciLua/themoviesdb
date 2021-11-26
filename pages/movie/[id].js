@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 
 export default function MovieItem({info}) {
@@ -13,8 +13,15 @@ export default function MovieItem({info}) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Filme:
+          Filme: {info.title}
         </h1>
+
+        <h1>Sinopse</h1>
+        <p>
+            {info.overview}
+        </p>
+
+        <img src={`https://image.tmdb.org/t/p/original${info.backdrop_path}`} width="400"/>
 
       <Link href='/busca'> Ir para a Busca</Link>
 
@@ -29,9 +36,8 @@ export default function MovieItem({info}) {
   )
 }
 
-//static generation
 
-export async function getStaticProps(context){
+export async function getServerSideProps(context){
 
   const res = await fetch(`http://localhost:3000/api/movie/${context.params.id}`)
   const json = await res.json()
@@ -39,7 +45,7 @@ export async function getStaticProps(context){
 
   return {
     props: {
-      info: json
+      info: json.info
     } 
   }
 }

@@ -20,7 +20,7 @@ export default function Home({list}) {
 
       <ul>
         {list.map(item => (
-          <li>
+          <li key={item.id.toString()}>
             <a href={`/movie/${item.id}`}>
               <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} width="150" />
               <span>{item.title}</span>
@@ -29,13 +29,13 @@ export default function Home({list}) {
         ))}
       </ul>
 
-
       </main>
 
       <footer className={styles.footer}>
         <p>Luci Lua</p>
       </footer>
     </div>
+
   )
 }
 
