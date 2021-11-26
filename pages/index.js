@@ -45,7 +45,7 @@ export async function getServerSideProps(){ // quando cria essse funcao automati
   // pegando dados de uma API externa.... por isso usa funcao assincrona
 
   // essa consulta foi feita no servidor, e nao no navegador
-  const res = await fetch('http://localhost:3000/api/trending')
+  const res = await fetch('https://themoviesdb.vercel.app/api/trending')
   const json = await res.json()
 
 

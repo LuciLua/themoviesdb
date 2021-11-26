@@ -9,7 +9,7 @@ export default function Busca({list}) {
 
     const handleSearch = async () => {
         if(searchText !== ''){
-            const result = await fetch(`http://localhost:3000/api/search?q=${searchText}`)
+            const result = await fetch(`https://themoviesdb.vercel.app/api/search?q=${searchText}`)
             const json = await result.json();
 
             setMovieList(json.list)
